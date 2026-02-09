@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forever Valentine 💌</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Sacramento&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    background: linear-gradient(135deg, #ffe6f0, #ffd1e8);
+    font-family: 'Playfair Display', serif;
+    min-height: 100vh;
+    overflow-y: auto;
+}
+
+/* Floating hearts */
+.heart {
+    position: fixed;
+    bottom: -10px;
+    font-size: 16px;
+    animation: floatUp 6s linear infinite;
+    pointer-events: none;
+}
+@keyframes floatUp {
+    to { transform: translateY(-110vh); opacity: 0; }
+}
+
+/* Center container */
+.container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+/* Envelope */
+.envelope-wrapper {
+    position: relative;
+    width: 90%;
+    max-width: 420px;
+    height: 260px;
+    background: #ffb3cc;
+    border-radius: 18px;
+    cursor: pointer;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+}
+
+.envelope-flap {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #ff99bb;
+    clip-path: polygon(0 0, 50% 60%, 100% 0);
+    transform-origin: top;
+    transition: transform 1s;
+    z-index: 2;
+}
+
+.envelope-wrapper.open .envelope-flap {
+    transform: rotateX(180deg);
+}
+
+/* Letter */
+.letter {
+    position: absolute;
+    width: 100%;
+    background: #fffaf0;
+    padding: 22px;
+    border-radius: 14px;
+    top: 20px;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 1s;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+.envelope-wrapper.open .letter {
+    opacity: 1;
+    transform: translateY(-100px);
+}
+
+/* Scrollbar */
+.letter::-webkit-scrollbar {
+    width: 6px;
+}
+.letter::-webkit-scrollbar-thumb {
+    background: #f2a7c2;
+    border-radius: 10px;
+}
+
+h1 {
+    font-family: 'Sacramento', cursive;
+    font-size: 40px;
+    color: #b03060;
+    margin-top: 0;
+}
+
+p {
+    font-size: 14.5px;
+    color: #5a1a2f;
+    line-height: 1.7;
+}
+
+/* Buttons */
+.buttons {
+    margin-top: 12px;
+    position: relative;
+    height: 50px;
+}
+
+button {
+    padding: 10px 22px;
+    border-radius: 25px;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#yes {
+    background: #ff4d88;
+    color: white;
+}
+
+#no {
+    background: #ffd6e6;
+    color: #b03060;
+    position: absolute;
+    left: 120px;
+}
+
+/* Questions */
+.questions {
+    display: none;
+    margin-top: 12px;
+}
+
+.questions input {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    border-radius: 10px;
+    border: 1px solid #e8b3c8;
+}
+
+.submit {
+    background: #ff4d88;
+    color: white;
+    width: 100%;
+    margin-top: 8px;
+}
+
+/* Thank you overlay */
+.thankyou {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(255,230,240,0.95);
+    align-items: center;
+    justify-content: center;
+    font-family: 'Sacramento', cursive;
+    font-size: 38px;
+    color: #b03060;
+    z-index: 999;
+    text-align: center;
+}
+
+.gift {
+    font-size: 44px;
+    animation: bounce 1s infinite;
+}
+@keyframes bounce {
+    50% { transform: translateY(-10px); }
+}
+
+/* Spotify player */
+.spotify-player {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    width: 240px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    z-index: 998;
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .spotify-player {
+        width: 220px;
+        bottom: 6px;
+        right: 6px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<div class="envelope-wrapper" onclick="openEnvelope()">
+    <div class="envelope-flap"></div>
+
+    <div class="letter">
+        <h1>My Love 💌</h1>
+
+        <p>It was 2023 when I first noticed you. I’d see you on the bus after college, quietly checking you out, even asking a friend to get your details at a tea shop. I was too nervous to face you then. The only thing I knew was that you spoke Hindi.</p>
+
+        <p>A month later, you disappeared. Then one day, I saw you again — walking fast toward the bus stop. I literally ran after you and asked for your Instagram. My heart was racing; I had never done anything that crazy before.</p>
+
+        <p>I waited all day for your text. When you didn’t message, I gathered the courage to text you that night. The conversation flowed so easily.</p>
+
+        <p>When I asked if we could go for a walk, you invited me to the beach instead. I was screaming inside, but I said yes — and went out with someone I had just met.</p>
+
+        <p>Crazy, right? But after that beach, it felt different. Not just attraction. I saw parts of myself in you.</p>
+
+        <p>I may have confessed too soon out of fear of losing you, but with time, I only fell harder. You made me realize I’m capable of loving deeply.</p>
+
+        <p>I fell for you — your stories, your family. It felt like gaining one of my own.</p>
+
+        <p>Love isn’t about who likes you from a distance. It’s about choosing risk over comfort, pursuing intentionally, and showing up consistently. Choosing again and again — letting actions match words.</p>
+
+        <p><strong>That’s the kind of love I believe in. That’s the kind of love I give.</strong></p>
+
+        <p><strong>Will you be my forever Valentine? 💗</strong></p>
+
+        <div class="buttons">
+            <button id="yes" onclick="showQuestions(event)">YES 💖</button>
+            <button id="no" onmouseover="moveNo()">NO 😏</button>
+        </div>
+
+        <div class="questions" id="questions">
+            <p>Ask me anything (only 3 💬)</p>
+            <input id="q1" placeholder="Question 1">
+            <input id="q2" placeholder="Question 2">
+            <input id="q3" placeholder="Question 3">
+            <button class="submit" onclick="submitAll()">Submit 💌</button>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- Thank you -->
+<div class="thankyou" id="thankyou">
+    Thank you for choosing me 💞<br>
+    <span class="gift">🎁</span>
+</div>
+
+<!-- Spotify (plays on same page) -->
+<div class="spotify-player">
+  <iframe
+    src="https://embed.spotify.com/?uri=spotify:track:3s3J70eRpRH2hcYq4mEXTJ"
+    width="240"
+    height="80"
+    frameborder="0"
+    allow="encrypted-media">
+  </iframe>
+</div>
+
+<script>
+function openEnvelope() {
+    document.querySelector(".envelope-wrapper").classList.add("open");
+}
+
+function moveNo() {
+    const no = document.getElementById("no");
+    no.style.left = Math.random() * 150 + "px";
+    no.style.top = Math.random() * 20 + "px";
+}
+
+function showQuestions(e) {
+    e.stopPropagation();
+    document.getElementById("questions").style.display = "block";
+}
+
+function submitAll() {
+    const q1Val = document.getElementById("q1").value.trim();
+    const q2Val = document.getElementById("q2").value.trim();
+    const q3Val = document.getElementById("q3").value.trim();
+
+    const message =
+`He chose YES 💖
+
+The questions he asked:
+
+1. ${q1Val || "(left blank)"}
+2. ${q2Val || "(left blank)"}
+3. ${q3Val || "(left blank)"}
+
+— From your Valentine website 💌`;
+
+    const whatsappURL =
+        "https://wa.me/919043190552?text=" + encodeURIComponent(message);
+
+    window.open(whatsappURL, "_blank");
+
+    const emailURL =
+        "mailto:Vanathi.r14@gmail.com?subject=Forever Valentine 💖&body=" +
+        encodeURIComponent(message);
+
+    window.location.href = emailURL;
+
+    document.getElementById("thankyou").style.display = "flex";
+}
+
+/* Floating hearts */
+setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerText = "💗";
+    heart.style.left = Math.random() * 100 + "vw";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 6000);
+}, 400);
+</script>
+
+</body>
+</html>
+
+
+
